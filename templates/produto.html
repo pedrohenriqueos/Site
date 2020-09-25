@@ -1,0 +1,27 @@
+{% if name!=None %}
+    {% extends "baseuser.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<form method="POST">
+    
+    {{produto["nome"]}}
+    <br>
+    <img src="{{url_for('static',filename='img/'+produto["nome"]+'.jpeg')}}">
+    <br>
+    {{produto["descricao"]}}
+    <br>
+    {% if produto["estoque"]!=0 and name!=None %}
+        <input type="number" name="quantidade" min="0" max="{{ produto["estoque"] }}" value="0">
+        <button type="submit" href="/" name="compra" value="{{ produto["code"] }}">Colocar no carrinho {{ produto["IDPRODUTO"] }}</button>
+    {% elif name!=None %}
+        <input type="number" name="quantidade" value="0" disabled>
+        <button type="submit" href="/" name="compra" value="{{ produto["code"] }}" disabled>Colocar no carrinho {{ produto["IDPRODUTO"] }}</button>
+    {% endif %}
+    
+</form>
+{% endblock %}

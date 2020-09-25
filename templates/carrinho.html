@@ -1,0 +1,23 @@
+{% extends "baseuser.html" %}
+
+{% block title %} Carrinho {% endblock %}
+{% block User_name %}{{name}}{% endblock %}
+
+{% block content %}
+
+    <form method="POST" action="#">
+        {% for produto in produtos %}
+            nome: {{produto["nome"]}}
+            <br>
+            preço: {{ "{0:.2f}".format(produto["preco"]) }}
+            <br>
+            quantidade: {{produto["quantidade"]}}
+            <br>
+            total: {{ "{0:.2f}".format(produto["quantidade"]*produto["preco"]) }}
+            <br>
+            <button type="submit" class="button_remove" name="remove" value="{{produto["IDITEM"]}}">X</button>
+            <br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

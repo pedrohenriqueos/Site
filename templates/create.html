@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %} Create User {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <center>
+            <form action="#" method = "post"class="col-sm-7" >
+                <div class="form-group row">
+                    <label for="inputname" class="col-form-label">Nome</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputname" name="nome">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCPF" class="col-form-label">CPF</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputCPF" name="cpf">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail" class="col-form-label">Email</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail" name="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputTelefone" class="col-form-label">Telefone</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="ddd" id="inputTelefone" name="ddd">
+                    </div> 
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="numero" id="inputTelefone1" name="telefone">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCEP" class="col-form-label">CEP</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputCEP" name="CEP">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputRua" class="col-form-label">Rua</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputRua" name="rua">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputNum" class="col-form-label">Numero</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputNum" name="num">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputBairro" class="col-form-label">Bairro</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputBairro" name="bairro">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputCidade" class="col-form-label">Cidade</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputCidade" name="cidade">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEstado" class="col-form-label">Estado</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEstado" name="estado">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputComplemento" class="col-form-label">Complemento</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputComplemento" name="complemento">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPass" class="col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPass" name="pass">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" name="pass2">
+                    </div>
+                </div>
+                <input type="submit" value="submit" class="btn btn-primary mb-2"/>   
+            </form>
+        </center>
+    </div>
+    {% endblock %}

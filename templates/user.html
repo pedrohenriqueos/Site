@@ -1,0 +1,14 @@
+{% extends "baseuser.html" %}
+{% block User_name %} {{name}} {% endblock %}
+{% block title %} {{name}} {% endblock %}
+
+{% block content %}
+<form method="POST" action="#">
+    {% for dado in dados %}
+        <button type="submit" class="button_img" href="/produto" name="nome" value="{{ dado["IDPRODUTO"] }}">
+        <img src="{{url_for('static',filename='img/'+dado["nome"]+'.jpeg')}}">
+        {{ dado["nome"] }}</button>
+
+    {% endfor %}
+</form>
+{% endblock %}
