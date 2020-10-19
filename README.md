@@ -1,12 +1,12 @@
-#Site
+# Site
 Este site foi criado para estudar sobre o funcionamento de site, comunicação entre Backend e Frontend.
 Utilizando python, mais especificamente a biblioteca flask no Backend. Existe uma comunicação com um banco de dados MySQL que possui todos os produtos e usuários do sistema (Imagens não estão dentro do banco de dados).
 Utilizando html, css, javascript no Frontend. Como a quantidade de produtos depende da quantidade de elementos no banco de dados, a inserção dos produtos são feitas através de javascript.
 
-####Banco de Dados
+#### Banco de Dados
 Todas as tabelas necessárias estão no arquivo do [banco de dados](banco.sql) juntamente com alguns elementos para testar o funcionamento do site
 
-####Imagens
+#### Imagens
 Todas as imagens foram retiras do site [pexels](https://www.pexels.com/).
 A lista de todas as imagens são:
 - [Abacaxi](https://www.pexels.com/photo/whole-pineapple-on-white-marble-surface-4195527/)
