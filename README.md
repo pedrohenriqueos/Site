@@ -11,7 +11,7 @@ Todas as imagens foram retiras do site [pexels](https://www.pexels.com/).
 A lista de todas as imagens são:
 - [Abacaxi](https://www.pexels.com/photo/whole-pineapple-on-white-marble-surface-4195527/)
 - [Romã](https://www.pexels.com/photo/ripe-pomegranate-on-metal-plate-on-white-table-4230630/)
-- [Pêra](https://www.pexels.com/photo/delicious-dew-food-fresh-fruit-568471/)
+- [Pera](https://www.pexels.com/photo/delicious-dew-food-fresh-fruit-568471/)
 - [Limão siciliano](https://www.pexels.com/pt-br/foto/abstrato-resumo-abstrair-aroma-4197821/)
 - [Pedra](https://www.pexels.com/pt-br/foto/acessorio-arranjo-organizacao-combinacao-4040600/)
 - [Faca](https://www.pexels.com/pt-br/foto/eletrodomestico-dispositivo-aparelho-preto-4226864/)
