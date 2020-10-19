@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/categoria.css') }}">
+
+<script>
+    window.addEventListener("load",function(){
+        var dados = '{{ produtos }}'
+        dados = dados.replace(/&#39;/gi,'"')
+        dados = JSON.parse(dados)
+        var campo = document.getElementById("produtos")
+        var form = document.createElement('form')
+        form.method = "post"
+        for(var x=0;x<dados.length;x++){
+            var button = document.createElement('button')
+            var figure = document.createElement('figure')
+            var figcaption = document.createElement('figcaption')
+            figcaption.innerHTML += `<p>${dados[x]['nome']}</p><p>R$ ${dados[x]['preco']*(100-dados[x]['desconto'])/100}</p>`
+            var img = document.createElement('img')
+            img.src = `../static/img/${dados[x]['img']}.png`
+            button.type = "submit"
+            button.name = "ID"
+            button.value = `${dados[x]['IDPRODUTO']}`
+            button.href = "/produto"
+            figure.appendChild(img)
+            figure.appendChild(figcaption)
+            button.appendChild(figure)
+            form.appendChild(button)
+        }
+        campo.appendChild(form)
+    });
+</script>
+{% endblock %}
+
+{% block body %}
+<section id="produtos">
+
+
+</section>
+{% endblock %}

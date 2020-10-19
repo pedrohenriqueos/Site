@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+nav#bar{
+    display: none;
+}
+form{
+    display: block;
+}
+
+div#produto{
+    display: inline-block;
+    max-width: 400px;
+    width: 20%;
+    /*border:1px solid black;*/
+}
+
+label#nome{
+    text-align: center;
+    width: 80%;
+    margin: 0px;
+    padding: 0px;
+    /*border: 1px solid red;*/
+}
+label#nome h1{
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+
+}
+label#nome p{
+    font-size: 12pt;
+    margin: 0px;
+    padding: 0px;
+}
+
+button#comprar{
+    border: none;
+    text-align: center;
+    background-color: grey;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13pt;
+    margin: 0px;
+    padding: 2px;
+}
+
+button#remover{
+    float: right;
+    margin-left: 80%;
+    border: none;
+    background-color: red;
+    font-weight: bolder;
+    font-size: 14pt;
+    cursor: pointer;
+    /*border:1px solid blue;*/
+}

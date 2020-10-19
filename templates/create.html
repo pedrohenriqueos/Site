@@ -1,96 +1,37 @@
 {% extends "base.html" %}
 
-{% block title %} Create User {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
 
-{% block content %}
-    <div class="container">
-        <center>
-            <form action="#" method = "post"class="col-sm-7" >
-                <div class="form-group row">
-                    <label for="inputname" class="col-form-label">Nome</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputname" name="nome">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputCPF" class="col-form-label">CPF</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputCPF" name="cpf">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-form-label">Email</label>
-                    <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail" name="email">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputTelefone" class="col-form-label">Telefone</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="ddd" id="inputTelefone" name="ddd">
-                    </div> 
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="numero" id="inputTelefone1" name="telefone">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputCEP" class="col-form-label">CEP</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputCEP" name="CEP">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputRua" class="col-form-label">Rua</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputRua" name="rua">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputNum" class="col-form-label">Numero</label>
-                    <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputNum" name="num">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputBairro" class="col-form-label">Bairro</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputBairro" name="bairro">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputCidade" class="col-form-label">Cidade</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputCidade" name="cidade">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputEstado" class="col-form-label">Estado</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEstado" name="estado">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputComplemento" class="col-form-label">Complemento</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputComplemento" name="complemento">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPass" class="col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPass" name="pass">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword" name="pass2">
-                    </div>
-                </div>
-                <input type="submit" value="submit" class="btn btn-primary mb-2"/>   
-            </form>
-        </center>
-    </div>
-    {% endblock %}
+{% endblock %}
+
+{% block body %}
+<center>
+    <form action="" method="POST">
+        <fieldset id="usuario">
+            <legend>Identificação do Usuário</legend>
+            <p><label for="cnome">Nome:</label><input type="text" name="tnome" id="cnome"></p>
+            <p><label for="ccpf">CPF:</label><input type="text" name="tcpf" id="ccpf"></p>
+            <p><label for="cemail">Email:</label><input type="text" name="temail" id="cemail"></p>
+            <p><label for="csenha">Senha:</label><input type="password" name="tsenha" id="csenha"></p>
+            <p><label for="cconf">Confirmar:</label><input type="password" name="tconf" id="cconf"></p>
+        </fieldset>
+        <fieldset id="telefone">
+            <legend>Número do Usuário</legend>
+            <p><label for="cddd">DDD:</label><input type="number" name="tddd" id="cddd"></p>
+            <p><label for="cnum">Numero:</label><input type="number" name="tnum" id="cnum"></p>
+        </fieldset>
+        <fieldset id="endereco">
+            <legend>Endereço do Usuário</legend>
+            <p><label for="clong">Longradura:</label><input type="text" name="tlong" id="clong"></p>
+            <p><label for="cnumend">Numero:</label><input type="number" name="tnumend" id="cnumend"></p>
+            <p><label for="ccep">CEP:</label><input type="number" name="tcep" id="ccep"></p>
+            <p><label for="cbairro">Bairro:</label><input type="text" name="tbairro" id="cbairro"></p>
+            <p><label for="ccid">Cidade:</label><input type="text" name="tcid" id="ccid"></p>
+            <p><label for="cest">Estado:</label><input type="text" name="test" id="cest"></p>
+            <p><label for="ccomp">Complemento:</label><textarea name="tcomp" id="ccomp"></textarea></p>
+        </fieldset>
+        <input type="submit" value="submit">
+    </form>
+</center>
+{% endblock %}

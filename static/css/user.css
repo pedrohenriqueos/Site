@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+ul{
+    list-style-type: none;
+    overflow: hidden;
+}
+li{
+    display: inline-block;
+    width: 100%;
+    max-width: 150px;
+    height: 100px;
+    cursor: pointer;
+    margin: 0px auto;
+    border: 1px solid black;
+    text-align: center;
+    background-color: rgb(177, 177, 177); 
+}

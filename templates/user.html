@@ -1,14 +1,18 @@
-{% extends "baseuser.html" %}
-{% block User_name %} {{name}} {% endblock %}
-{% block title %} {{name}} {% endblock %}
+{% extends "base.html" %}
 
-{% block content %}
-<form method="POST" action="#">
-    {% for dado in dados %}
-        <button type="submit" class="button_img" href="/produto" name="nome" value="{{ dado["IDPRODUTO"] }}">
-        <img src="{{url_for('static',filename='img/'+dado["nome"]+'.jpeg')}}">
-        {{ dado["nome"] }}</button>
+{% block head %}
 
-    {% endfor %}
-</form>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/user.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+
+<ul>
+    <li name="acao" value="cadastro" id="ccadastro" onclick="location.href=`{{ url_for('cadastro') }}`">Alterar Cadastro</li>
+    <li name="acao" value="pedidos" id="cpedidos" onclick="location.href=`{{ url_for('pedidos') }}`">Seus Pedidos</li>
+    <li name="acao" value="dados" id="cdados" onclick="location.href=`{{ url_for('dados') }}`">Seus Dados</li>
+</ul>
+
 {% endblock %}

@@ -1,27 +1,101 @@
-{% if name!=None %}
-    {% extends "baseuser.html" %}
-{% else %}
-    {% extends "base.html" %}
-{% endif %}
+{% extends "base.html" %}
 
-{% block title %} Home Page {% endblock %}
-
-{% block content %}
-<form method="POST">
-    
-    {{produto["nome"]}}
-    <br>
-    <img src="{{url_for('static',filename='img/'+produto["nome"]+'.jpeg')}}">
-    <br>
-    {{produto["descricao"]}}
-    <br>
-    {% if produto["estoque"]!=0 and name!=None %}
-        <input type="number" name="quantidade" min="0" max="{{ produto["estoque"] }}" value="0">
-        <button type="submit" href="/" name="compra" value="{{ produto["code"] }}">Colocar no carrinho {{ produto["IDPRODUTO"] }}</button>
-    {% elif name!=None %}
-        <input type="number" name="quantidade" value="0" disabled>
-        <button type="submit" href="/" name="compra" value="{{ produto["code"] }}" disabled>Colocar no carrinho {{ produto["IDPRODUTO"] }}</button>
+{% block head %}
+<!-- Lógica no css, por isso está no html -->
+<style> 
+    {% if name == None or estoque==0 %}
+        button#ccompra{
+            display: none;
+        }
+        input#cquantidade{
+            display: none;
+        }
     {% endif %}
+    div#produto{
+        width: 100%;
+        display: block;
+    }
+
+    div#produto section{
+        display: block;
+        width: 60%;
+    }
+
+    div#produto aside{
+        text-align: center;
+        float: right;
+        position: absolute;
+        right: 10%;
+        top: 200px;
+        width: 30%;
+        border: 1px solid black;
+    }
+
+    input#cquantidade{
+        width: 50px;
+    }
+
+    button#ccompra{
+        font-size: 12pt;
+        background-color: gray;
+        border:none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+<script>
     
-</form>
+    function produto(dados){
+        var campo = document.getElementById('produto')
+        var form = document.createElement('form')
+        form.method = "post"
+        var section = document.createElement('section')
+        section.innerHTML+=`<h1>${dados['nome']}</h1>`
+        var figure = document.createElement('figure')
+        var img = document.createElement('img')
+        img.src = `../static/img/${dados['img']}.png`
+        figure.appendChild(img)
+        section.appendChild(figure)
+
+        var aside = document.createElement('aside')
+        var button = document.createElement('button')
+        var input = document.createElement('input')
+        button.innerText = "Adicionar ao Carrinho"
+        aside.innerHTML+=`<h1>Preço: R$ ${dados['preco']*(100-dados['desconto'])/100}</h1>`
+        aside.innerHTML+=`<h2>Desconto: ${dados['desconto']}%</h2>`
+        input.type = "number"
+        input.name = "quantidade"
+        input.id = "cquantidade"
+        input.value= "0"
+        button.name = "compra"
+        button.id = "ccompra"
+        button.value = `${dados['IDPRODUTO']}`
+        form.appendChild(input)
+        form.appendChild(button)
+        aside.appendChild(form)
+        section.innerHTML+=`<p>${dados['descricao']}</p>`
+        campo.appendChild(section)
+        campo.appendChild(aside)
+    
+    
+    }
+
+    window.addEventListener("load",function(){
+        var dados1 = '{{ produto }}'
+        dados1 = dados1.replace(/&#39;/gi,'"')
+        var map1 = JSON.parse(dados1)
+        produto(map1)
+        
+    });
+
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="produto">
+
+</div>
+
 {% endblock %}

@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+section figure{
+    display: inline-block;
+    margin: 5px;
+    padding:0px;
+}
+
+figure p{
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+figure:hover p{
+    opacity: 1;
+}
+
+figcaption{
+    display: block;
+}
+figcaption p{
+    display: inline-block;
+    margin: 0px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+section button{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}

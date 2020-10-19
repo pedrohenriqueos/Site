@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.classcadastro{
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+form input[type="submit"]{
+    margin: 10px;
+    background-color: gray;
+    font-size: 13pt;
+    border: none;
+}
+
+form legend{
+    font-weight: bold;
+}

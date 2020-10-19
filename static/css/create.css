@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+nav#bar{
+    display: none;
+}
+form{
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+input[type="submit"]{
+    border: none;
+    font-size: 13pt;
+    border-radius: 4px;
+    margin: 5px 5px 25px 5px;
+    padding: 5px;
+    background-color: gray;
+    cursor: pointer;
+}

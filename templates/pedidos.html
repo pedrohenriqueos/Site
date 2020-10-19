@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pedidos.css') }}">
+
+<script>
+    window.addEventListener("load",function(){
+        var dados = '{{ pedidos }}'
+        dados = dados.replace(/&#39;/gi,'"')
+        dados = JSON.parse(dados)
+        var campo = document.getElementById('Pedidos')
+        for(var x=0;x<dados.length;x++){
+            var div = document.createElement('div')
+            div.name = "pedido"
+            div.innerHTML = `<h1>${dados[x]['nome']}</h1><p><strong>Quantidade: </strong>${dados[x]['quantidade']}</p><p><strong>Preço Unidade: </strong>${dados[x]['preco']}</p>`
+            campo.appendChild(div)
+        }
+    });
+</script>
+{% endblock %}
+
+
+{% block body %}
+<section id="Pedidos">
+
+</section>
+{% endblock %}

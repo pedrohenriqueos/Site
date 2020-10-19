@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dados.css') }}">
+
+<script>
+window.addEventListener("load",function(){
+    var dados1 = '{{ dados }}'
+    dados1 = dados1.replace(/&#39;/gi,'"')
+    var map1 = JSON.parse(dados1)
+    var campo = document.getElementById('dados')
+    for(var obj in map1){
+        var p = document.createElement('p')
+        p.innerHTML = `<strong>${obj}:</strong> ${map1[obj]}`
+        campo.appendChild(p)       
+    }
+});   
+</script>
+
+{% endblock %}
+
+
+{% block body %}
+<center>
+<div id="dados">
+
+</div>
+</center>
+{% endblock %}

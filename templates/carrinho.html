@@ -1,23 +1,51 @@
-{% extends "baseuser.html" %}
+{% extends "base.html" %}
 
-{% block title %} Carrinho {% endblock %}
-{% block User_name %}{{name}}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/carrinho.css') }}">
 
-{% block content %}
+<script>
+    window.addEventListener("load",function(){
+        var dados = "{{ produtos }}"
+        dados = dados.replace(/&#39;/gi,'"')
+        dados = JSON.parse(dados)
+        var campo = document.getElementById("carrinho")
+        var form = document.createElement('form')
+        form.method = "post"
+        for(var x=0;x<dados.length;x++){
+            var div = document.createElement('div')
+            var img = document.createElement('img')
+            var button = document.createElement('button')
+            var label = document.createElement('label')
+            img.src = `../static/img/${dados[x]['img']}.png`
+            label.innerHTML = `<h1>Produto: ${dados[x]['nome']}</h1>`
+            label.innerHTML += `<p>Preço: R$ ${(dados[x]['preco']*(100-dados[x]['desconto'])/100)*dados[x]['quantidade']}</p>`
+            label.innerHTML += `<p>Quantidade: ${dados[x]['quantidade']}</p>`
+            button.type = "submit"
+            button.name="remove"
+            button.value=`${dados[x]['IDITEM']}`
+            button.innerText = "X"
+            button.id = "remover"
+            div.id = "produto"
+            label.id = "nome"
+            div.appendChild(label)
+            div.appendChild(button)
+            div.appendChild(img)
+            form.appendChild(div)
+        }
 
-    <form method="POST" action="#">
-        {% for produto in produtos %}
-            nome: {{produto["nome"]}}
-            <br>
-            preço: {{ "{0:.2f}".format(produto["preco"]) }}
-            <br>
-            quantidade: {{produto["quantidade"]}}
-            <br>
-            total: {{ "{0:.2f}".format(produto["quantidade"]*produto["preco"]) }}
-            <br>
-            <button type="submit" class="button_remove" name="remove" value="{{produto["IDITEM"]}}">X</button>
-            <br>
-        {% endfor %}
-        <button type="submit">Submit</button>
-    </form>
+        var button2 = document.createElement('button')
+        button2.type = "submit"
+        button2.innerText = "Submit"
+        button2.id = "comprar"
+        form.appendChild(button2)
+        campo.appendChild(form)
+    });
+</script>
+{% endblock %}
+
+{% block body %}
+<section id="carrinho">
+
+</section>
+
 {% endblock %}

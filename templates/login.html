@@ -1,22 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %} Login {% endblock %}
-{% block content %}
-    <div class="container">
-        <center>
-            <form action="#" method = "post">
-                <div class="col-sm-3 my-5">
-                    <div class="form-group">
-                        <label for="username" >email:</label><br>
-                        <input type="text" class="form-control" id ="username" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Password:</label><br>
-                        <input type="password" class="form-control" id="senha" name="pass">
-                    </div>
-                    <input type="submit" value="submit" class="btn btn-primary btn-block">
-                </div>
-            </form>
-        </center>
-    </div>
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+{% endblock %}
+
+{% block body %}
+<center>
+<form action="" method="post">
+    <fieldset>
+        <legend>Login</legend>
+        <h1>Login</h1>
+        <p><label for="clogin">Email:</label><input type="text" name="tlogin" id="clogin"></p>
+        <p><label for="csenhae">Senha:</label><input type="password" name="tsenhae" id="csenhae"></p>
+    </fieldset>
+    <input type="submit" value="submit">
+</form>
+</center>
 {% endblock %}

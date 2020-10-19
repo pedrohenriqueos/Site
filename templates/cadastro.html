@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/cadastro.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<center>
+<form method="post" class="classcadastro">
+    <fieldset>
+        <legend>Alterar Senha</legend>
+        <p><label for="csenha">Senha antiga:</label><input type="password" name="tsenha" id="csenha"></p>
+        <p><label for="csenhanew">Senha nova:</label><input type="password" name="tsenhanew" id="csenhanew"></p>
+        <p><label for="csenhaconf">Confirmar senha:</label><input type="password" name="tsenhaconf" id="csenhaconf"></p>
+    </fieldset>
+    <input type="submit" name="tasenha" value="submit">
+</form>
+
+<form method="post" class="classcadastro">
+    <fieldset>
+        <legend>Alterar Endereço</legend>
+        <p><label for="csenha">Senha:</label><input type="password" name="tsenha" id="csenha"></p>
+        <p><label for="clong">Longradura:</label><input type="text" name="tlong" id="clong"></p>
+        <p><label for="cnumend">Numero:</label><input type="number" name="tnumend" id="cnumend"></p>
+        <p><label for="ccep">CEP:</label><input type="number" name="tcep" id="ccep"></p>
+        <p><label for="cbairro">Bairro:</label><input type="text" name="tbairro" id="cbairro"></p>
+        <p><label for="ccid">Cidade:</label><input type="text" name="tcid" id="ccid"></p>
+        <p><label for="cest">Estado:</label><input type="text" name="test" id="cest"></p>
+        <p><label for="ccomp">Complemento:</label><textarea name="tcomp" id="ccomp"></textarea></p>
+    </fieldset>
+    <input type="submit" name="taend" value="submit">
+</form>
+
+<form method="post" class="classcadastro">
+    <fieldset>
+        <legend>Alterar Telefone</legend>
+        <p><label for="csenha">Senha:</label><input type="password" name="tsenha" id="csenha"></p>
+        <p><label for="cddd">DDD:</label><input type="number" name="tddd" id="cddd"></p>
+        <p><label for="cnum">Numero:</label><input type="number" name="tnum" id="cnum"></p>
+    </fieldset>
+    <input type="submit" name="tatel" value="submit">
+</form>
+</center>
+{% endblock %}

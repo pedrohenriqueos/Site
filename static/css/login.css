@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+form{
+    width: 100%;
+    max-width: 500px;
+}
+
+form input[type="submit"]{
+    border: none;
+    background-color: grey;
+    font-size: 13pt;
+    color:white;
+    font-weight: 400;
+    padding:5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+fieldset{
+    border:1px solid black;
+}
+
+fieldset legend{
+    display: none;
+}
+
+fieldset h1{
+    font-size: 14pt;
+
+}
+fieldset label{
+    font-weight: bold;
+    cursor: pointer;
+}

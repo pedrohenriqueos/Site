@@ -1,12 +1,25 @@
+CREATE DATABASE site;
 USE site
 
 CREATE TABLE PRODUTO(
 	IDPRODUTO INT PRIMARY KEY AUTO_INCREMENT,
+	principal BOOLEAN DEFAULT 0,
 	preco FLOAT(10,2) NOT NULL,
 	descricao VARCHAR(100),
-	desconto INT DEFAULT 0,
+	desconto FLOAT(5,2) DEFAULT 0,
 	nome  VARCHAR(50) NOT NULL,
-	estoque INT NOT NULL
+	estoque INT NOT NULL,
+	img VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE PRODUTO_CATEGORIAS(
+	ID_PRODUTO INT NOT NULL,
+	ID_CATEGORIAS INT NOT NULL
+);
+
+CREATE TABLE CATEGORIAS(
+	IDCATEGORIAS INT PRIMARY KEY AUTO_INCREMENT,
+	categoria VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE CLIENTE(
@@ -52,6 +65,18 @@ CREATE TABLE VENDAS(
 	preco FLOAT(10,2) NOT NULL
 );
 
+ALTER TABLE PRODUTO_CATEGORIAS ADD CONSTRAINT 
+PK_PRODUTO_CATEGORIAS PRIMARY KEY(ID_PRODUTO,ID_CATEGORIAS);
+
+ALTER TABLE PRODUTO_CATEGORIAS ADD CONSTRAINT FK_PC_PRODUTO
+FOREIGN KEY(ID_PRODUTO) REFERENCES PRODUTO(IDPRODUTO);
+
+ALTER TABLE PRODUTO_CATEGORIAS ADD CONSTRAINT FK_PC_CATEGORIAS
+FOREIGN KEY(ID_CATEGORIAS) REFERENCES CATEGORIAS(IDCATEGORIAS);
+
+ALTER TABLE PRODUTO ADD CONSTRAINT FK_PRODUTO_CATEGORIAS
+FOREIGN KEY(ID_CATEGORIAS) REFERENCES CATEGORIAS(IDCATEGORIAS);
+
 ALTER TABLE ITEM ADD CONSTRAINT FK_ITEM_PRODUTO
 FOREIGN KEY(ID_PRODUTO) REFERENCES PRODUTO(IDPRODUTO);
 
@@ -70,7 +95,6 @@ FOREIGN KEY(ID_PRODUTO) REFERENCES PRODUTO(IDPRODUTO);
 ALTER TABLE VENDAS ADD CONSTRAINT FK_VENDAS_CLIENTE
 FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTE(IDCLIENTE);
 
-
 DELIMITER $
 CREATE TRIGGER SAVE_ADM
 BEFORE DELETE ON ITEM
@@ -84,3 +108,26 @@ BEGIN
 END
 $
 DELIMITER ;
+
+CREATE VIEW DADOS AS
+SELECT C.IDCLIENTE, C.nome, C.email, E.nome AS longradura, E.numero, E.CEP, E.bairro, 
+E.cidade, E.estado, E.complemento, T.ddd,T.numero AS telefone 
+FROM CLIENTE AS C 
+INNER JOIN ENDERECO AS E ON C.ID_ENDERECO=E.IDENDERECO 
+INNER JOIN TELEFONE AS T ON C.ID_TELEFONE=T.IDTELEFONE;
+
+INSERT INTO CATEGORIAS (categoria) VALUES ('fruta'),('aleatorio'),('escolar'),('beleza'),('utensilios');
+
+INSERT INTO PRODUTO (principal,preco,descricao,desconto,nome,estoque,img) VALUES
+                    (1,       9.5,'Romã boa',    0,    'Romã', 60, 'roma'),
+                    (0,       6, 'Pera boa',     5,    'Pera', 85, 'pera'),
+                    (0,      75, 'Pedra rosa',   0,    'Pedra',50,'pedra1'),
+                    (0,      6, 'Limão siciliano bom',   10, 'Limão siciliano',45,'limao'),
+                    (1,     20,'Lapiseira cinza',0,'Lapiseira',100,'lapiseira'),
+                    (1,     45,'Faca amolada',   0,'Faca',     75,'faca'),
+                    (0,     7,'Cebola boa',      0,'Cebola',   55,'cebola'),
+                    (0,    25,'produto beleza',  0,'Beleza',   25,'beleza'),
+                    (0,    12,'Abacaxi bom',     0,'Abacaxi',  60,'abacaxi');
+
+INSERT INTO PRODUTO_CATEGORIAS (ID_PRODUTO,ID_CATEGORIAS) VALUES
+(1,1), (2,1) , (3,2) , (4,1) , (5,3), (6,5) , (7,1) , (8,4) , (9,1);

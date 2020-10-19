@@ -1,14 +1,65 @@
 {% extends "base.html" %}
 
-{% block title %} Home Page {% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-{% block content %}
-<form method="POST" action="#">
-    {% for dado in dados %}
-        <button type="submit" class="button_img" href="/produto" name="nome" value="{{ dado["IDPRODUTO"] }}">
-        <img src="{{url_for('static',filename='img/'+dado["nome"]+'.jpeg')}}">
-        {{ dado["nome"] }}</button>
+<script>
+    function setValues(dados,path){
+        var campo = document.getElementById(path)
+        var form = document.createElement('form')
+        form.method = "post"
+        campo.innerHTML = `<h1>Principais ${path}</h1>`
+        for(var x=0;x<dados.length;x++){
+            var button = document.createElement('button')
+            var figure = document.createElement('figure')
+            var figcaption = document.createElement('figcaption')
+            figcaption.innerHTML += `<p>${dados[x]['nome']}</p><p>R$ ${dados[x]['preco']*(100.0-dados[x]['desconto'])/100.0}</p>`
+            var img = document.createElement('img')
+            img.src = `../static/img/${dados[x]['img']}.png`
+            button.type = "submit"
+            button.name = "ID"
+            button.value = `${dados[x]['IDPRODUTO']}`
+            button.href = "/produto"
+            figure.appendChild(img)
+            figure.appendChild(figcaption)
+            button.appendChild(figure)
+            form.appendChild(button)
+        }
+        campo.appendChild(form)
+    }
 
-    {% endfor %}
-</form>
+    window.addEventListener("load",function(){
+        var dados1 = '{{ dados_principais }}'
+        dados1 = dados1.replace(/&#39;/gi,'"')
+        var map1 = JSON.parse(dados1)
+        setValues(map1,'Principais')
+        var dados2 = '{{ dados_ofertas }}'
+        dados2 = dados2.replace(/&#39;/gi,'"')
+        var map2 = JSON.parse(dados2)
+        setValues(map2,'Ofertas')
+        var dados3 = '{{ dados_vendidos }}'
+        dados3 = dados3.replace(/&#39;/gi,'"')
+        var map3 = JSON.parse(dados3)
+        setValues(map3,'Vendidos')
+    });
+</script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<section id="Principais"> <!--Os q eu quis-->
+   
+</section>
+
+<section id="Vendidos"><!--Select vendidos-->
+
+
+</section>
+
+<section id="Ofertas"><!--Select desconto-->
+
+
+</section>
 {% endblock %}

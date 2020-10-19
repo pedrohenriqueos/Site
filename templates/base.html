@@ -1,24 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <title>Site</title>
+
+    <script>
+        window.addEventListener("load",function(){
+            var dados1 = '{{ bar }}'
+            dados1 = dados1.replace(/&#39;/gi,'"')
+            var map1 = JSON.parse(dados1)
+            var campo = document.getElementById('bar')
+            var form = document.createElement('form')
+            form.method = "post"
+            var label = document.createElement('label')
+            label.innerText = "Categorias"
+            form.appendChild(label)
+            for(var x=0;x<map1.length;x++){
+                var button = document.createElement('button')
+                button.innerText = `${map1[x]['categoria']}`
+                button.type = "submit"
+                button.name = "categoria"
+                button.value = `${map1[x]['IDCATEGORIAS']}`
+                button.href = "/produto"
+                form.appendChild(button)
+            }
+            
+            campo.appendChild(form)
+        });
+    </script>
+    {% block head %} {% endblock %}
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Site</div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/create">Create</a></li>
-            </ul>
-        </nav>
+    <header id="cabecalho">
+        <a href="{{ url_for('index') }}"><img id="logo" src="{{ url_for('static', filename='img/logo.png') }}"></a>
+        <form id="search" method="POST">
+            <input href="{{ url_for('search') }}" type="search" name="nSearch" id="iSearch" placeholder="Buscar">
+        </form>
+        <div id="usuario">
+            <div id="enter">
+            {% if name == None %}
+                <a href="{{ url_for('create') }}"><h1>Olá, cadastre-se</h1></a>
+                <a href="{{ url_for('login') }}"><h1>Faça seu login</h1></a>
+            {% else %}
+                <a href="{{ url_for('user') }}"><h1>Olá, {{name}}</h1></a>
+                <a href="{{ url_for('logout') }}"><h1>Logout</h1></a>
+            {% endif %}
+            </div>
+            <a href="{{ url_for('carrinho') }}"><i class="material-icons">shopping_cart</i></a>
+        </div>
     </header>
-    
-    {% block content %}{% endblock %}
+    <nav id="bar">
 
+    </nav>
+    {% block body %} {% endblock %}
+
+    <footer id="rodape">
+        <hgroup>
+            <h1>Sobre</h1>
+            <h1>Atendimento</h1>
+        </hgroup>
+        <div>
+            <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}"><br>
+            <div id="sociais">
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <h2>Rua Inventada, 1234</h2>
+    </footer>
 </body>
 </html>
